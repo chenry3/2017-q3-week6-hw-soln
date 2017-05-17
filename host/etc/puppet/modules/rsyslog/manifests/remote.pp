@@ -8,4 +8,18 @@ class rsyslog::remote {
       group    => root,
       notify   => Service['rsyslog']
   }
+  file {
+    '/data/':
+      ensure  => directory,
+      owner   => root,
+      group   => root,
+      mode    => 0755
+  }
+  file {
+    '/data/rsyslog':
+      ensure  => directory,
+      owner   => root,
+      group   => root,
+      mode    => 0777
+  }
 }
