@@ -1,0 +1,8 @@
+from ubuntu:xenial
+
+RUN apt-get update && apt-get -y install logrotate
+COPY etc/logrotate.conf /etc/logrotate.conf
+COPY init.d/logrotate_exec.sh /etc/init.d/logrotate_exec.sh
+RUN chmod +x /etc/init.d/logrotate_exec.sh
+
+ENTRYPOINT [ "/etc/init.d/logrotate_exec.sh" ]
